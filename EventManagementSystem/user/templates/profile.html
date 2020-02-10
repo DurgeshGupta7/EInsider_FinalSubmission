@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br>
+
+<body>
+	<div class="card">
+		<div class="info">
+			<div class="name">{{ user.username }}</div>
+			<div class="prof">{{ user.email }}</div>
+			<div class="divider"></div>
+
+			<form method="POST" enctype="multipart/form-data" class="form-group" >
+				<center><legend>Profile Info</legend></center>
+				{% csrf_token %}
+				{{uform.as_p}}
+				{{pform.as_p}}			
+			
+				<button class="btn btn-success" type="Submit">Update</button>
+			</form>
+		</div>
+
+		<div class="photo">
+			
+		</div>
+	</div>
+
+	<style type="text/css">
+		body{
+			background-color: #fff;
+			padding: 0;
+			margin:0;
+		}
+
+		.card{
+			background-color: white;
+			height:680px;
+			width:460px;
+			position: absolute;
+			margin:auto;
+			top: 200px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			border-radius: 8px;
+			box-shadow: 0 0 20px 10px rgba(233,144,7,0.7);
+		}
+
+		.info{
+			height: 100%;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+		}
+
+		.name{
+			font-size: 35px;
+			font-family: 'Tahoma', sans-serif;
+			color: #f79f08;
+			position: absolute;
+			top: 140px;
+			letter-spacing: 2px;
+			font-weight: 600;
+			top: 140px;
+		}
+
+		.prof{
+			font-size: 25px;
+			position: absolute;
+			top: 190px;
+			font-family: 'Tahoma', sans-serif;
+			color: #555555;
+
+		}
+
+		.divider{
+			background-color: #949594;
+			height: 1.5px;
+			width: 50px;
+			position: absolute;
+			top: 260px;
+		}
+
+		form{
+			position: absolute;
+			bottom: 30px;
+		}
+
+		button{
+			position: absolute;
+			bottom:-30px;
+			background-color: #f79f08;
+			border:none;
+			font-size: 20px;
+			padding: 13px 25px;
+			color: white;
+			font-family:  'Rock Salt', cursive;
+			left:212px;
+		}
+
+		.photo{
+			height: 100%;
+			width: 100%;
+			background:url({{user.profile.image.url}});
+			position: absolute;
+			bottom: 0;
+			background-size: 100% 100%;
+			border-radius: 8px;
+			transition: 1s;
+		}
+
+		.card:hover .photo{
+			transform: scale(0.4,0.30) translateY(-1000px);
+			background-size: 100% 150%;
+			background-position: 0 -25px;
+			border-radius: 50%;
+		}
+	</style>
+
+</body>
+
+{% endblock %}
+
+
+	

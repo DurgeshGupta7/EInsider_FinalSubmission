@@ -1,0 +1,53 @@
+{% extends 'cal/base.html' %}
+
+{% block content %}
+
+<style type="text/css">
+		 a{
+			font-family: 'Tahoma', sans-serif;
+		}
+		h2{
+			font-family: 'Tahoma', sans-serif;
+			font-size: 64px;
+		}		
+</style>
+<br><br>
+<h2>Events</h2>
+
+	
+	<p>
+		<center><a href="{% url 'cal:calendar' %}" class="btn btn-primary">Calendar</a></center>
+
+	</p>
+
+<br><br>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Event Name</th>
+			<th>Event Description</th>
+			<th>Event Date</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for e in event %}
+			<tr>
+				<td>{{e.title}}</td>
+				<td>{{e.description}}</td>
+				<td>{{e.start_time}}</td>
+				<td>
+					<form method="POST" action="{% url 'cal:drop_list' e.pk %}">
+						{% csrf_token %}
+						<button type="Submit" class="btn btn-danger btn-sm">Delete</button>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+
+	
+</table>
+
+{% endblock %}

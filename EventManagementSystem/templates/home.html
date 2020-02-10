@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+
+	<style type="text/css">
+		 a{
+			font-family: 'Tahoma', sans-serif;
+		}		
+	</style>
+
+	<br><br><br>
+
+{% if user.is_authenticated %}
+	<center><img src="{{user.profile.image.url}}" class="rounded-circle" alt="My Profile" width="304" height="236"></center>
+
+	<h2><center>Welcome! {{ user.username }}</center></h2>
+	<br><br><br>
+
+	<div class="container">
+	<div class="card">
+		<div class="face face1">
+			<div class="content">
+				<h3>File Upload</h3>
+			</div>			
+		</div>
+		<div class="face face2">
+			<div class="content">
+				<p><center>Want to view your files</p></center>
+   				<center><a class="btn waves-effect waves-red" href="/files/">File</a></center>
+			</div>			
+		</div>
+	</div>
+	<div class="card">
+		<div class="face face1">
+			<div class="content">
+				<h3>Add Event</h3>
+			</div>			
+		</div>
+		<div class="face face2">
+			<div class="content">
+				<p><center>Want to add Event</p></center>
+   				<center><a class="btn waves-effect waves-red" href="/calendar/">calendar</a></center>
+			</div>			
+		</div>
+	</div>
+	<div class="card">
+		<div class="face face1">
+			<div class="content">
+				<h3>View Note</h3>
+			</div>			
+		</div>
+		<div class="face face2">
+			<div class="content">
+				<p><center>Forgot to do something.Let's Check Notes.</p></center>
+   				<center><a class="btn waves-effect waves-red" href="/note/">Note</a></center>
+			</div>			
+		</div>
+	</div>
+</div>
+
+	<style type="text/css">
+		h3{
+			font-family: 'Tahoma', sans-serif;
+		}
+
+		.container{
+		width: 1000px;
+		position: relative;
+		display: flex;
+		justify-content: space-between;		
+	}
+
+	.container .card{
+		position: relative;
+
+	}
+
+	.container .card .face{
+		width: 300px;
+		height: 100px;
+		transition:0.5s;
+	}
+
+	.container .card .face.face1{
+		position: relative;
+		background:#DE5759;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 1;
+		transform: translateY(100px);
+	}
+
+	.container .card:hover .face.face1{
+		transform: translateY(0px);
+	}
+
+	/*.container .card .face.face1 .content{
+		opacity: 0.2;
+		transition: 0.5s;
+
+	}*/
+
+	/*container .card:hover .face.face1 .content{
+		opacity: 1;
+		transition: 0.5s;
+		
+	}
+*/
+	.container .card .face.face2{
+		position: relative;
+		background:#fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;
+		box-sizing: border-box;
+		box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+	}
+
+	.container .card .face.face2 .content p{
+		margin: 0;
+		padding: 0;
+
+	}
+
+	.container .card .face.face2 .content a{
+		margin: 15px 0 0;
+		/*display: inline-block;
+		text-decoration: none;*/
+		font-weight: 900;
+		color: #DE5759;
+		padding: 5px;
+		border: 1px solid #DE5759;
+	}
+
+	/*.container .card .face.face2 .content a:hover{
+		background:#333;
+		color: #fff;
+	}*/
+	</style>
+
+	
+{% else %}
+	<h2><center>Please Login to continue </h2></center> 
+
+	<style type="text/css">
+		h2{
+			font-family: 'Tahoma', sans-serif;
+		}
+	</style>
+
+{% endif %}
+
+</body>
+
+{% endblock %}
